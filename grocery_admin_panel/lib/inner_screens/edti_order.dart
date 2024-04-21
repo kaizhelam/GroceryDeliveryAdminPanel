@@ -27,9 +27,10 @@ class EditOrderScreen extends StatefulWidget {
     required this.orderId,
     required this.phoneNumber,
     required this.title,
+    required this.message,
   });
 
-  final String username, userid, productid, imageUrl, userLocation, orderId, phoneNumber, title;
+  final String username, userid, productid, imageUrl, userLocation, orderId, phoneNumber, title, message;
   final double price;
   final int quantity, orderStatus;
   final Timestamp orderDate;
@@ -41,7 +42,7 @@ class EditOrderScreen extends StatefulWidget {
 class _EditOrderScreenState extends State<EditOrderScreen> {
   late String _userName;
   late String _userId;
-  late String _price;
+  late double _price;
   late String _productId;
   late String _imageUrl;
   late Timestamp _orderDate;
@@ -50,9 +51,9 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
   late String _phoneNumber;
   late int _productSold;
   late String _title;
-
   late int _quantity;
   late int _orderStatus;
+  late String _message;
   final _formKey = GlobalKey<FormState>();
   // late final TextEditingController _titleController, _priceController;
 
@@ -63,7 +64,7 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
 
     _userName = widget.username;
     _userId = widget.userid;
-    _price = widget.price.toString();
+    _price = widget.price;
     _productId = widget.productid;
     _imageUrl = widget.imageUrl;
     _quantity = widget.quantity;
@@ -73,6 +74,7 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
     _orderId = widget.orderId;
     _phoneNumber = widget.phoneNumber;
     _title = widget.title;
+    _message = widget.message;
 
     super.initState();
   }
@@ -182,7 +184,7 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).textTheme.bodyText1?.color,
+                    color: color,
                   ),
                 ),
                 SizedBox(height: 20),
@@ -241,7 +243,7 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
                           color: color,
                           isTitle: false,
                         ),
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 15 ),
                         TextWidget(
                             text: 'Order Date and Time',
                             color: color,
@@ -252,12 +254,33 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
                           color: color,
                           isTitle: false,
                         ),
+                        const SizedBox(height: 15 ),
+                        TextWidget(
+                            text: 'Note for Driver',
+                            color: color,
+                            isTitle: true
+                        ),
+                        TextWidget(
+                          text: _message,
+                          color: color,
+                          isTitle: false,
+                        ),
+                        const SizedBox(height: 15 ),
+                        TextWidget(
+                          text: 'Total Price',
+                          color: color,
+                          isTitle: true,
+                        ),
+                        TextWidget(
+                          text: 'RM ${_price.toStringAsFixed(2)}',
+                          color: color,
+                          isTitle: false,
+                        ),
                         const SizedBox(height: 15),
                         Image.network(
                           _imageUrl, // Replace with your image URL
-                          width: 200, // Adjust the width to your desired size
-                          height: 200, // Adjust the height to your desired size
-                          fit: BoxFit.cover, // Adjust the fit property as needed
+                          width: 150, // Adjust the width to your desired size
+                          height: 150, // Adjust the height to your desired size// Adjust the fit property as needed
                         ),
                         const SizedBox(height: 15),
                         TextWidget(

@@ -255,7 +255,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     TextWidget(
-                                      text: 'Price in \$*',
+                                      text: 'Price in RM*',
                                       color: color,
                                       isTitle: true,
                                     ),
@@ -266,7 +266,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                       width: 100,
                                       child: TextFormField(
                                         controller: _priceController,
-                                        key: const ValueKey('Price \$'),
+                                        key: const ValueKey('Price RM'),
                                         keyboardType: TextInputType.number,
                                         validator: (value) {
                                           if (value!.isEmpty) {
@@ -373,7 +373,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                           : Row(
                                               children: [
                                                 TextWidget(
-                                                    text: "\$" +
+                                                    text: "RM" +
                                                         _salePrice
                                                             .toStringAsFixed(2),
                                                     color: color),

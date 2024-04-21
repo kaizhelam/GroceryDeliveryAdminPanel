@@ -248,7 +248,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
                                           MainAxisAlignment.start,
                                       children: [
                                         TextWidget(
-                                          text: 'Price in \$*',
+                                          text: 'Price in RM*',
                                           color: color,
                                           isTitle: true,
                                         ),
@@ -259,7 +259,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
                                           width: 130,
                                           child: TextFormField(
                                             controller: _priceController,
-                                            key: const ValueKey('Price \$'),
+                                            key: const ValueKey('Price RM'),
                                             keyboardType: TextInputType.number,
                                             validator: (value) {
                                               if (value!.isEmpty) {

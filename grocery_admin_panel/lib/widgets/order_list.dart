@@ -1,3 +1,5 @@
+import 'dart:js_interop_unsafe';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +53,7 @@ class OrdersList extends StatelessWidget {
                           orderId: snapshot.data!.docs[index]['orderId'],
                           phoneNumber: snapshot.data!.docs[index]['phoneNumber'],
                           title : snapshot.data!.docs[index]['title'],
+                          noteForDriver: snapshot.data!.docs[index]['noteForDriver'],
                         ),
                         const Divider(
                           thickness: 3,

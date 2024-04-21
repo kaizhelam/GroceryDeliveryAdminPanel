@@ -18,11 +18,11 @@ class OrdersWidget extends StatefulWidget {
       required this.userName,
       required this.quantity,
       required this.orderDate,
-      required this.orderStatus, required this.shippingAddress, required this.orderId, required this.phoneNumber, required this.title})
+      required this.orderStatus, required this.shippingAddress, required this.orderId, required this.phoneNumber, required this.title, required this.noteForDriver})
       : super(key: key);
 
   final double price, totalPrice;
-  final String productId, userId, imageUrl, userName, shippingAddress,   orderId, phoneNumber, title;
+  final String productId, userId, imageUrl, userName, shippingAddress,   orderId, phoneNumber, title, noteForDriver;
   final int quantity, orderStatus;
   final Timestamp orderDate;
 
@@ -64,6 +64,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
               orderId: widget.orderId,
               phoneNumber: widget.phoneNumber,
               title: widget.title,
+              message: widget.noteForDriver,
             ),
           ),
         );
@@ -105,7 +106,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                       ),
                       TextWidget(
                         text:
-                            '${widget.quantity}x For \$${widget.price.toStringAsFixed(2)}',
+                            '${widget.quantity}x For RM${widget.price.toStringAsFixed(2)}',
                         color: color,
                         textSize: 16,
                         isTitle: false,
