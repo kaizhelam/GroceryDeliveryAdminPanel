@@ -103,6 +103,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
           'isPiece': isPiece,
           'createdAt': Timestamp.now(),
           'productSold': 0,
+          'ratingReview' : [],
         });
         _clearForm();
         Fluttertoast.showToast(
@@ -348,7 +349,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
                                               activeColor: Colors.green,
                                             ),
                                             TextWidget(
-                                              text: 'Piece',
+                                              text: 'Item',
                                               color: color,
                                             ),
                                             Radio(
@@ -551,9 +552,9 @@ class _UploadProductFormState extends State<UploadProductForm> {
           items: const [
             DropdownMenuItem(
               child: Text(
-                'Vegetables',
+                'Foods',
               ),
-              value: 'Vegetables',
+              value: 'Foods',
             ),
             DropdownMenuItem(
               child: Text(
@@ -563,9 +564,15 @@ class _UploadProductFormState extends State<UploadProductForm> {
             ),
             DropdownMenuItem(
               child: Text(
-                'Grains',
+                'Vegetables',
               ),
-              value: 'Grains',
+              value: 'Vegetables',
+            ),
+            DropdownMenuItem(
+              child: Text(
+                'Drinks',
+              ),
+              value: 'Drinks',
             ),
             DropdownMenuItem(
               child: Text(
@@ -575,16 +582,22 @@ class _UploadProductFormState extends State<UploadProductForm> {
             ),
             DropdownMenuItem(
               child: Text(
-                'Herbs',
+                'Grains',
               ),
-              value: 'Herbs',
+              value: 'Grains',
             ),
-            DropdownMenuItem(
-              child: Text(
-                'Spices',
-              ),
-              value: 'Spices',
-            )
+            // DropdownMenuItem(
+            //   child: Text(
+            //     'Herbs',
+            //   ),
+            //   value: 'Herbs',
+            // ),
+            // DropdownMenuItem(
+            //   child: Text(
+            //     'Spices',
+            //   ),
+            //   value: 'Spices',
+            // ),
           ],
         )),
       ),

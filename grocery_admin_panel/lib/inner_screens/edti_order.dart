@@ -28,10 +28,12 @@ class EditOrderScreen extends StatefulWidget {
     required this.phoneNumber,
     required this.title,
     required this.message,
+    required this.totalPayment,
+    required this.paymentMethod
   });
 
-  final String username, userid, productid, imageUrl, userLocation, orderId, phoneNumber, title, message;
-  final double price;
+  final String username, userid, productid, imageUrl, userLocation, orderId, phoneNumber, title, message, paymentMethod;
+  final double price, totalPayment;
   final int quantity, orderStatus;
   final Timestamp orderDate;
 
@@ -54,6 +56,8 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
   late int _quantity;
   late int _orderStatus;
   late String _message;
+  late double _totalPayment;
+  late String _paymentMethod;
   final _formKey = GlobalKey<FormState>();
   // late final TextEditingController _titleController, _priceController;
 
@@ -75,6 +79,8 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
     _phoneNumber = widget.phoneNumber;
     _title = widget.title;
     _message = widget.message;
+    _totalPayment = widget.totalPayment;
+    _paymentMethod = widget.paymentMethod;
 
     super.initState();
   }
@@ -261,18 +267,29 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
                             isTitle: true
                         ),
                         TextWidget(
-                          text: _message,
+                          text: _message.isEmpty ? 'No Message For The Driver' : _message,
                           color: color,
                           isTitle: false,
                         ),
                         const SizedBox(height: 15 ),
                         TextWidget(
-                          text: 'Total Price',
+                          text: 'Total Payment',
                           color: color,
                           isTitle: true,
                         ),
                         TextWidget(
-                          text: 'RM ${_price.toStringAsFixed(2)}',
+                          text: 'RM ${_totalPayment.toStringAsFixed(2)}',
+                          color: color,
+                          isTitle: false,
+                        ),
+                        const SizedBox(height: 15 ),
+                        TextWidget(
+                          text: 'Payment Method',
+                          color: color,
+                          isTitle: true,
+                        ),
+                        TextWidget(
+                          text: _paymentMethod,
                           color: color,
                           isTitle: false,
                         ),

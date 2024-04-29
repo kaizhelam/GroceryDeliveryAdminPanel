@@ -36,10 +36,11 @@ class EditProductScreen extends StatefulWidget {
       required this.productCat,
       required this.imageUrl,
       required this.isOnSale,
-      required this.isPiece})
+      required this.isPiece,
+      required this.productDescription})
       : super(key: key);
 
-  final String id, title, price, productCat, imageUrl;
+  final String id, title, price, productCat, imageUrl, productDescription;
   final bool isPiece, isOnSale;
   final double salePrice;
   @override
@@ -49,7 +50,7 @@ class EditProductScreen extends StatefulWidget {
 class _EditProductScreenState extends State<EditProductScreen> {
   final _formKey = GlobalKey<FormState>();
   // Title and price controllers
-  late final TextEditingController _titleController, _priceController;
+  late final TextEditingController _titleController, _priceController, _productDescriptionController;
   // Category
   late String _catValue;
   // Sale
@@ -64,6 +65,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   // kg or Piece,
   late int val;
   late bool _isPiece;
+  // late String _productDescription;
   // while loading
   bool _isLoading = false;
   @override
@@ -71,6 +73,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     // set the price and title initial values and initialize the controllers
     _priceController = TextEditingController(text: widget.price);
     _titleController = TextEditingController(text: widget.title);
+    _productDescriptionController = TextEditingController(text: widget.productDescription);
     // Set the variables
     _salePrice = widget.salePrice;
     _catValue = widget.productCat;
@@ -142,6 +145,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
           'productCategoryName': _catValue,
           'isOnSale': _isOnSale,
           'isPiece': _isPiece,
+          'productDescription' : _productDescriptionController.text,
         });
 
         // Show a toast message
@@ -285,6 +289,29 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                       ),
                                     ),
                                     const SizedBox(height: 20),
+                                    SizedBox(
+                                      width: 180,
+                                      height: 200,
+                                      child: TextFormField(
+                                        maxLines: null, // Set this
+                                        expands: true, // and this
+                                        keyboardType:
+                                        TextInputType.multiline,
+                                        controller: _productDescriptionController,
+                                        key: const ValueKey('Description'),
+                                        validator: (value) {
+                                          if (value!.isEmpty) {
+                                            return 'Product description is missed';
+                                          }
+                                          return null;
+                                        },
+                                        style: TextStyle(
+                                          color: color,
+                                        ),
+                                        decoration: inputDecoration,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 30),
                                     TextWidget(
                                       text: 'Product category*',
                                       color: color,
@@ -326,7 +353,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                           },
                                           activeColor: Colors.green,
                                         ),
-                                        TextWidget(text: 'Piece', color: color),
+                                        TextWidget(text: 'Item', color: color),
                                         Radio(
                                           value: 2,
                                           groupValue: val,
@@ -548,29 +575,37 @@ class _EditProductScreenState extends State<EditProductScreen> {
         style: TextStyle(color: color),
         items: const [
           DropdownMenuItem<String>(
-            child: Text('Vegetables'),
-            value: 'Vegetables',
+            child: Text('Foods'),
+            value: 'Foods',
           ),
           DropdownMenuItem<String>(
             child: Text('Fruits'),
             value: 'Fruits',
           ),
           DropdownMenuItem<String>(
-            child: Text('Grains'),
-            value: 'Grains',
+            child: Text('Vegetables'),
+            value: 'Vegetables',
+          ),
+          DropdownMenuItem<String>(
+            child: Text('Drinks'),
+            value: 'Drinks',
           ),
           DropdownMenuItem<String>(
             child: Text('Nuts'),
             value: 'Nuts',
           ),
           DropdownMenuItem<String>(
-            child: Text('Herbs'),
-            value: 'Herbs',
+            child: Text('Grains'),
+            value: 'Grains',
           ),
-          DropdownMenuItem<String>(
-            child: Text('Spices'),
-            value: 'Spices',
-          ),
+          // DropdownMenuItem<String>(
+          //   child: Text('Herbs'),
+          //   value: 'Herbs',
+          // ),
+          // // DropdownMenuItem<String>(
+          // //   child: Text('Spices'),
+          // //   value: 'Spices',
+          // // ),
         ],
         onChanged: (value) {
           setState(() {

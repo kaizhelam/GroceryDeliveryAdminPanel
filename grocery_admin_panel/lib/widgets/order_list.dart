@@ -54,6 +54,8 @@ class OrdersList extends StatelessWidget {
                           phoneNumber: snapshot.data!.docs[index]['phoneNumber'],
                           title : snapshot.data!.docs[index]['title'],
                           noteForDriver: snapshot.data!.docs[index]['noteForDriver'],
+                          totalPayment : snapshot.data!.docs[index]['totalPayment'],
+                          paymentMethod :  snapshot.data!.docs[index]['paymentMethod'],
                         ),
                         const Divider(
                           thickness: 3,

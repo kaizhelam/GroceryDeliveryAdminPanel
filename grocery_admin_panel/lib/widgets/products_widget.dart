@@ -26,6 +26,7 @@ class _ProductWidgetState extends State<ProductWidget> {
   double salePrice = 0.0;
   bool isOnSale = false;
   bool isPiece = false;
+  String productDescription = '';
 
   @override
   void initState() {
@@ -50,6 +51,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           salePrice = productsDoc.get('salePrice');
           isOnSale = productsDoc.get('isOnSale');
           isPiece = productsDoc.get('isPiece');
+          productDescription = productsDoc.get('productDescription');
         });
       }
     } catch (error) {
@@ -83,6 +85,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                       : imageUrl!,
                   isOnSale: isOnSale,
                   isPiece: isPiece,
+                  productDescription : productDescription,
                 ),
               ),
             );
@@ -126,6 +129,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                             : imageUrl!,
                                         isOnSale: isOnSale,
                                         isPiece: isPiece,
+                                        productDescription : productDescription,
                                       ),
                                     ),
                                   );
@@ -163,7 +167,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                         )),
                     const Spacer(),
                     TextWidget(
-                      text: isPiece ? 'Piece' : '1Kg',
+                      text: isPiece ? 'Item' : '1Kg',
                       color: color,
                       textSize: 18,
                     ),
