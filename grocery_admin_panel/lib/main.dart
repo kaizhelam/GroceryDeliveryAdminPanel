@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         builder: (context, themeProvider, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Grocery',
+            title: 'GoGrocery Admin Panel',
             theme: Styles.themeData(themeProvider.getDarkTheme, context),
             home: const MainScreen(),
             routes: {

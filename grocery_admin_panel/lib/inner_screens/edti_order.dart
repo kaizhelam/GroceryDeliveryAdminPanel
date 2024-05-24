@@ -169,9 +169,9 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
     DateTime orderDateTime = orderTimestamp.toDate();
 
     // Remove 8 hours from the orderDateTime
-    orderDateTime = orderDateTime.subtract(Duration(hours: 8));
+    orderDateTime = orderDateTime.subtract(Duration(hours: 0));
 
-    // Format the DateTime object into a user-readable string with 12-hour format
+    // Format the DateTime object into a user-readable string with flutter run -d chrome --web-renderer htmlcd12-hour format
     String formattedDateTime =
     DateFormat('yyyy-MM-dd hh:mm:ss a').format(orderDateTime);
 
@@ -301,21 +301,21 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
                         ),
                         const SizedBox(height: 15),
                         TextWidget(
-                          text: 'The order is ' + (_orderStatus == 0 ? 'Pending' : 'In Progress'),
+                          text: 'The order is ' + (_orderStatus == 0 ? 'Pending' : 'Accepted'),
                           color: color,
                         ),
                         const SizedBox(height: 15),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
+                            // ElevatedButton(
+                            //   onPressed: () {
+                            //     // Add onPressed logic for the first button
+                            //   },
+                            //   child: const Text('Reject'),
+                            // ),
                             ElevatedButton(
-                              onPressed: () {
-                                // Add onPressed logic for the first button
-                              },
-                              child: const Text('Reject'),
-                            ),
-                            ElevatedButton(
-                              onPressed: _acceptOrder,
+                              onPressed: _orderStatus == 1 ? null : _acceptOrder, // Disable button if orderStatus is 1
                               child: const Text('Accept'),
                             ),
                           ],

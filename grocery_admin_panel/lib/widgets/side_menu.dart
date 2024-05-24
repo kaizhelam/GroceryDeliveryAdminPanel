@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_admin_panel/inner_screens/all_driver.dart';
 import 'package:grocery_admin_panel/inner_screens/all_orders_screen.dart';
 import 'package:grocery_admin_panel/inner_screens/all_products.dart';
 import 'package:grocery_admin_panel/providers/dark_theme_provider.dart';
@@ -33,7 +34,8 @@ class _SideMenuState extends State<SideMenu> {
         children: [
           DrawerHeader(
             child: Image.asset(
-              "assets/images/groceries.png",
+              "assets/images/instant.png",
+              fit: BoxFit.cover,
             ),
           ),
           DrawerListTile(
@@ -69,18 +71,29 @@ class _SideMenuState extends State<SideMenu> {
             },
             icon: IconlyBold.bag_2,
           ),
-          SwitchListTile(
-            title: const Text('Theme'),
-            secondary: Icon(themeState.getDarkTheme
-                ? Icons.dark_mode_outlined
-                : Icons.light_mode_outlined),
-            value: theme,
-            onChanged: (value) {
-              setState(() {
-                themeState.setDarkTheme = value;
-              });
+          DrawerListTile(
+            title: "View All Driver",
+            press: () {
+              Navigator.pushReplacement(context,
+                MaterialPageRoute(
+                  builder: (context) => const AllDriver(),
+                ),
+              );
             },
-          )
+            icon: IconlyBold.user_2,
+          ),
+          // SwitchListTile(
+          //   title: const Text('Theme'),
+          //   secondary: Icon(themeState.getDarkTheme
+          //       ? Icons.dark_mode_outlined
+          //       : Icons.light_mode_outlined),
+          //   value: theme,
+          //   onChanged: (value) {
+          //     setState(() {
+          //       themeState.setDarkTheme = value;
+          //     });
+          //   },
+          // )
         ],
       ),
     );

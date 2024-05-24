@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_admin_panel/consts/constants.dart';
+import 'package:grocery_admin_panel/inner_screens/add_driver.dart';
 import 'package:grocery_admin_panel/inner_screens/add_prod.dart';
 import 'package:grocery_admin_panel/responsive.dart';
 import 'package:grocery_admin_panel/services/global_method.dart';
@@ -68,6 +69,20 @@ class DashboardScreen extends StatelessWidget {
                       );
                     },
                     text: 'Add a new product',
+                    icon: Icons.add,
+                    backgroundColor: Colors.blue,
+                  ),
+                  SizedBox(width: 10,),
+                  ButtonsWidget(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AddDriver(),
+                        ),
+                      );
+                    },
+                    text: 'Add a new Driver',
                     icon: Icons.add,
                     backgroundColor: Colors.blue,
                   )
