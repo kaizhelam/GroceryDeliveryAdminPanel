@@ -68,7 +68,7 @@ class OrdersList extends StatelessWidget {
             return const Center(
               child: Padding(
                 padding: EdgeInsets.all(18.0),
-                child: Text('Your store is empty'),
+                child: Text('No Available Orders'),
               ),
             );
           }
